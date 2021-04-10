@@ -20,7 +20,6 @@ namespace just_for_fun
 
         public string Triangles(int side1,
             int side2, int side3)
-
         {
 
             if (side1 == side2 && side1 == side3)
@@ -44,13 +43,11 @@ namespace just_for_fun
                 return null;
 
             ArrayList nodeList = new ArrayList();
-            int length = 0;
 
             var currentNode = head;
             while (currentNode != null)
             {
                 nodeList.Add(currentNode);
-                length++;
                 currentNode = currentNode.Next;
             }
 
@@ -60,14 +57,4 @@ namespace just_for_fun
         }
     }
 
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }
