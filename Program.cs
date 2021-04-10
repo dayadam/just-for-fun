@@ -9,10 +9,6 @@ namespace just_for_fun
         static void Main(string[] args)
         {
 
-            // Console.WriteLine("New");
-
-            //if (args[0] == "Triangles")
-            // {
             int[] var = { 2, 2, 2 };
             Program Program = new Program();
             Console.WriteLine(Program.Triangles(2, 2, 2));
@@ -20,24 +16,12 @@ namespace just_for_fun
             LinkedList<int> list1 = new LinkedList<int>(nums1);
             Console.WriteLine(Program.Get5thFromLastLinkedList
                 (list1.First).Value);
-            // }
         }
-
-        //private object Get5thFromLastLinkedList(LinkedListNode<int> first)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public string Triangles(int side1,
             int side2, int side3)
 
         {
-            //int firstItem;
-            //foreach (int item in lengthOfSides)
-            //{
-            //    firstItem = item;
-            //    Console.WriteLine(item);
-            //}
 
             if (side1 == side2 && side1 == side3)
             {
@@ -52,7 +36,7 @@ namespace just_for_fun
 
             return "Scalene";
         }
-        //LinkedList<int> linkedList
+
         public LinkedListNode<int> Get5thFromLastLinkedList(
             LinkedListNode<int> head)
         {
@@ -73,28 +57,6 @@ namespace just_for_fun
             int count = nodeList.Count;
             return (LinkedListNode<int>)nodeList[count - 5 - 1]; 
 
-            //LinkedListNode<int> prev = null;
-            //LinkedListNode<int> next = head.Next;
-            //while (next != null)
-            //{
-            //    head.Next = prev;
-            //    prev = head;
-            //    head = next;
-            //    next = head.Next;
-            //}
-
-            //int counter = 0;
-            //prev = null;
-            //next = head.next;
-            //while (counter < 5)
-            //{
-            //    head.next = prev;
-            //    prev = head;
-            //    head = next;
-            //    next = head.next;
-            //    counter++;
-            //}
-            //return head;
         }
     }
 
