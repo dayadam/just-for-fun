@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Linq;
 
 namespace just_for_fun
 {
@@ -15,6 +18,9 @@ namespace just_for_fun
             LinkedList<dynamic> list1 = new LinkedList<dynamic>(nums1);
             Console.WriteLine(Program.Get5thFromLastLinkedList
                 (list1.First).Value);
+            //Program.GetTextLines();
+            //Program.GetPrimeFactors("42");
+            Program.PrintAllPrimeFactors();
         }
 
         public string Triangles(int side1,
@@ -58,6 +64,60 @@ namespace just_for_fun
                     nodeList.Count - 5 - 1];
 
             }
+
+
+        private static List<string> GetTextLines ()
+        {
+            string filePath = Directory.GetCurrentDirectory() +
+                @"../../../../Integers.txt";
+
+            List<string> lines = File.ReadAllLines(filePath).ToList();
+
+            return lines;
+        }
+
+        private static void GetPrimeFactors (string number)
+        {
+            int numInt = int.Parse(number);
+
+            if (numInt < 2)
+            {
+                Console.WriteLine("Number has no prime factors");
+                return; 
+            }
+
+            int div = 2;
+            List<int> primeFactors = new List<int>();
+            while (div <= numInt)
+            {
+                if (numInt % div == 0 || div == numInt)
+                {
+                    primeFactors.Add(div);
+                    numInt = numInt / div;
+                    div = 2;
+                }
+                else
+                {
+                    div++;
+                }
+
+            }
+
+            Console.WriteLine(string.Join(", ", primeFactors));
+
+        }
+
+        private static void PrintAllPrimeFactors()
+        {
+            List<string> lines = Program.GetTextLines();
+
+            foreach (string line in lines)
+            {
+                Program.GetPrimeFactors(line);
+            }
+
+        }
+
     }
 
 }
