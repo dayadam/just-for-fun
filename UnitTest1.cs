@@ -29,8 +29,8 @@ namespace just_for_fun
 
         [Theory]
         [MemberData(nameof(TestData))]
-        public void FifthFromLastElInLinkedList(
-        LinkedListNode<int> expected, LinkedListNode<int> firstNode)
+        public void FifthFromLastElInLinkedListInt(
+        LinkedListNode<dynamic> expected, LinkedListNode<dynamic> firstNode)
         {
             Assert.Equal(expected, _sut.
                 Get5thFromLastLinkedList(firstNode));
@@ -38,9 +38,36 @@ namespace just_for_fun
 
         public static IEnumerable<object[]> TestData()
         {
-            int[] nums1 = {1, 2, 3, 4, 5, 1, 1, 1, 1, 1};
-            LinkedList<int> list1 = new LinkedList<int>(nums1);
+            dynamic[] nums1 = {1, 2, 3, 4, 5, 1, 1, 1, 1, 1};
+            LinkedList<dynamic> list1 = new LinkedList<dynamic>(nums1);
             yield return new object[] { list1.Find(5), list1.First };
+            LinkedList<dynamic> list2 = new LinkedList<dynamic>();
+            yield return new object[] { null, list2.First };
+            dynamic[] nums3 = { 1, 2, 3 };
+            LinkedList<dynamic> list3 = new LinkedList<dynamic>(nums3);
+            yield return new object[] { null, list3.First };
+        }
+
+        [Theory]
+        [MemberData(nameof(TestDataString))]
+        public void FifthFromLastElInLinkedListString(
+            LinkedListNode<dynamic> expected, LinkedListNode<dynamic> firstNode)
+        {
+            Assert.Equal(expected, _sut.
+                Get5thFromLastLinkedList(firstNode));
+        }
+
+        public static IEnumerable<object[]> TestDataString()
+        {
+            dynamic[] strings1 = { "1", "2", "3", "4", "5",
+                "1", "1", "1", "1", "1" };
+            LinkedList<dynamic> list1 = new LinkedList<dynamic>(strings1);
+            yield return new object[] { list1.Find("5"), list1.First };
+            LinkedList<dynamic> list2 = new LinkedList<dynamic>();
+            yield return new object[] { null, list2.First };
+            dynamic[] strings3 = { "1", "2", "3" };
+            LinkedList<dynamic> list3 = new LinkedList<dynamic>(strings3);
+            yield return new object[] { null, list3.First };
         }
 
     }
