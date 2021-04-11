@@ -18,8 +18,6 @@ namespace just_for_fun
             LinkedList<dynamic> list1 = new LinkedList<dynamic>(nums1);
             Console.WriteLine(Program.Get5thFromLastLinkedList
                 (list1.First).Value);
-            //Program.GetTextLines();
-            //Program.GetPrimeFactors("42");
             Program.PrintAllPrimeFactors();
         }
 
@@ -41,32 +39,32 @@ namespace just_for_fun
             return "Scalene";
         }
 
-            public LinkedListNode<dynamic> Get5thFromLastLinkedList(
+        public LinkedListNode<dynamic> Get5thFromLastLinkedList(
                 LinkedListNode<dynamic> head)
+         {
+            if (head == null)
+                return null;
+
+            ArrayList nodeList = new ArrayList();
+
+            var currentNode = head;
+            while (currentNode != null)
             {
-                if (head == null)
-                    return null;
-
-                ArrayList nodeList = new ArrayList();
-
-                var currentNode = head;
-                while (currentNode != null)
-                {
-                    nodeList.Add(currentNode);
-                    currentNode = currentNode.Next;
-                }
-
-                if (nodeList.Count < 6)
-                {
-                    return null;
-                }
-                return (LinkedListNode<dynamic>)nodeList[
-                    nodeList.Count - 5 - 1];
-
+                nodeList.Add(currentNode);
+                currentNode = currentNode.Next;
             }
 
+            if (nodeList.Count < 6)
+            {
+                return null;
+            }
+            return (LinkedListNode<dynamic>)nodeList[
+                nodeList.Count - 5 - 1];
 
-        private static List<string> GetTextLines ()
+         }
+
+
+        public List<string> GetTextLines ()
         {
             string filePath = Directory.GetCurrentDirectory() +
                 @"../../../../Integers.txt";
@@ -76,18 +74,17 @@ namespace just_for_fun
             return lines;
         }
 
-        private static void GetPrimeFactors (string number)
+        public List<int> GetPrimeFactors (string number)
         {
             int numInt = int.Parse(number);
-
+            List<int> primeFactors = new List<int>();
             if (numInt < 2)
             {
                 Console.WriteLine("Number has no prime factors");
-                return; 
+                return primeFactors; 
             }
 
             int div = 2;
-            List<int> primeFactors = new List<int>();
             while (div <= numInt)
             {
                 if (numInt % div == 0 || div == numInt)
@@ -105,10 +102,13 @@ namespace just_for_fun
 
             Console.WriteLine(string.Join(", ", primeFactors));
 
+            return primeFactors;
+
         }
 
-        private static void PrintAllPrimeFactors()
+        public void PrintAllPrimeFactors()
         {
+            Program Program = new Program();
             List<string> lines = Program.GetTextLines();
 
             foreach (string line in lines)

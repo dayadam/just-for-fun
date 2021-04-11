@@ -70,5 +70,28 @@ namespace just_for_fun
             yield return new object[] { null, list3.First };
         }
 
+        [Theory]
+        [MemberData(nameof(TestDataPrime))]
+        public void ReturnsPrimeList(List<int> expected,
+            string number)
+        {
+            Assert.Equal(expected, _sut.GetPrimeFactors(number));
+        }
+
+        public static IEnumerable<object[]> TestDataPrime()
+        {
+            int[] ints1 = { 2 };
+            List<int> list1 = new List<int>(ints1);
+            yield return new object[] { list1, "2" };
+            int[] ints2 = { 3, 5 };
+            List<int> list2 = new List<int>(ints2);
+            yield return new object[] { list2, "15" };
+            int[] ints3 = { 3, 7 };
+            List<int> list3 = new List<int>(ints3);
+            yield return new object[] { list3, "21" };
+            List<int> list4 = new List<int>();
+            yield return new object[] { list4, "-21" };
+        }
+
     }
 }
